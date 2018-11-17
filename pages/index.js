@@ -1,5 +1,6 @@
 import "../styles/style.css";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 import MyLoader from "../components/MyLoader";
 import React, { Component, Fragment } from "react";
 import axios from "axios";
@@ -247,6 +248,7 @@ export default class extends Component {
                     key={politician.id}
                     name={politician.name}
                     imgPath={politician.image}
+                    candidate={politician.candidates[0]}
                   />
                 );
               })}
@@ -261,15 +263,7 @@ export default class extends Component {
             </div>
           </div>
 
-          <div className="mt-12 border-t-2 border-grey-light text-center py-8 text-grey=dark">
-            A Project by
-            <a
-              href="#"
-              className="text-indigo-dark font-semibold no-underline hover:underline"
-            >
-              Civic Monitor
-            </a>
-          </div>
+          <Footer />
         </div>
       </div>
     );
