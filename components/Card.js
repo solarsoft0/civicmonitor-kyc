@@ -1,5 +1,8 @@
+import Link from "next/link";
+
+
 export default props => {
-  const { name, imgPath } = props;
+  const { name, imgPath, candidate} = props;
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 flex flex-col mb-8">
       <div className="hover:translateY-2px transition bg-white rounded-lg shadow flex-1 flex flex-col">
@@ -15,6 +18,12 @@ export default props => {
             <a href="#" className="no-underline hover:underline text-black">
               {name}
             </a>
+            <p href="#" className="no-underline hover:underline text-black">
+              {/* {party} */}
+              <Link href={{ pathname: '/profile', query: { id: candidate.id } }}>
+                <a>Learn More</a>
+              </Link>
+            </p>
           </h3>
           <div>
             <a className="no-underline inline-flex items-center" href="#">
