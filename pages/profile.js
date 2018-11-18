@@ -79,7 +79,6 @@ e.preventDefault();
   }
 
   render() {
-    console.log(this.state);
 
     return <div>
         <Nav />
