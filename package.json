@@ -9,11 +9,15 @@
     "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "next": "^7.0.2",
+    "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
     "react": "^16.6.1",
+    "react-accessible-accordion": "^2.4.5",
     "react-content-loader": "^3.2.0",
     "react-dom": "^16.6.1",
+    "redux": "^4.0.1",
     "tailwindcss": "^0.7.2"
   }
 }

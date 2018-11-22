@@ -37,18 +37,13 @@ console.log(data);
     super(props);
 
     // Sets up our initial state
-    this.state = {
-      error: false,
-      hasMore: true,
-      isLoading: false,
-      politicians: [],
-     candidate:[],
-     IssuePositions:[],
-      political_party:"",
-      current_page: "PROFILE"
-    };
+    this.state = { error: false, hasMore: true, isLoading: false, politicians: [], candidate: [], IssuePositions: [], political_party: "", current_page: "ISSUE_POSITIONS" };
   }
   
+   calcAge(dateString) {
+  var birthday = +new Date(dateString);
+  return ~~((Date.now() - birthday) / (31557600000));
+}
   componentWillMount() {
     console.log(this.props);
     const {membership} = this.props.candidate.data;
@@ -65,7 +60,7 @@ console.log(data);
 handleTabSwitch = (e) => {
 e.preventDefault();
   this.setState((state, props) => ({
-    current_page: state.current_page == "PROFILE" ? "ISSUE_POSITIONS" : "PROFILE"
+    current_page: state.current_page == "ISSUE_POSITIONS" ? "PROFILE" : "ISSUE_POSITIONS"
   }));
   
 }
@@ -73,7 +68,7 @@ e.preventDefault();
     var breakTag =
       is_xhtml || typeof is_xhtml === "undefined" ? "<br />" : "<br>";
     return (str + "").replace(
-      /([^>\r\n]?)(\r\n|\n\r|\r|\n)/g,
+      /([^>\r\n]?)(\r\n|\n\r| \r|\n)/g,
       "$1" + breakTag + "$2"
     );
   }
@@ -90,17 +85,14 @@ e.preventDefault();
               </div>
               <div className="mt-5 w-3/4 flex flex-col items-center md:items-start text-white ">
                 <h2 className="text-center text-white">
-                {this.state.politician.name}
-              </h2>
-                <div className="mt-5 flex flex-wrap">
-                  <p className="text-center md:text-left w-1/2">
-                  <strong>Born:</strong> <br className=" sm:inline" /> {this.state.politician.birth_date}
+                  {this.state.politician.name}
+                </h2>
+                <div className="mt-5 flex flex-wrap flex-col">
+                  <p className="text-center md:text-left">
+                    <strong >Age:</strong> <br className=" sm:inline" /> {this.calcAge(this.state.politician.birth_date)} Years
                   </p>
-                  <p className="text-center md:text-left w-1/2">
-                  <strong>Nationality:</strong> {this.state.politician.national_identity}
-                  </p>
-                  <p className="text-center self-center md:text-left w-full md:w-1/2 mt-2">
-                    <strong>Gender:</strong> {this.state.politician.gender}
+                  <p className="text-center md:text-left flex items-center">
+                  <strong className="mr-5">Party:</strong> {this.state.political_party.name} ({this.state.political_party.acronym}) <img className="ml-5 w-10 h-10 rounded-full" src={`https://res.cloudinary.com/civic-monitor/image/upload/${this.state.political_party.logo}`} />
                   </p>
                 </div>
               </div>
@@ -110,16 +102,21 @@ e.preventDefault();
         <div className="container mx-auto px-6 py-10">
           <div className="flex flex-col-reverse sm:flex-row">
             <div className="w-full sm:w-3/4 sm:mr-5">
-               { this.state.current_page == "PROFILE" ? <Profile politician={this.state.politician} /> :
-             <IssuePositions IssuePositions = {this.state.IssuePositions} />}
+              {this.state.current_page == "PROFILE" ? (
+                <Profile politician={this.state.politician} />
+              ) : (
+                <IssuePositions
+                  IssuePositions={this.state.IssuePositions}
+                />
+              )}
             </div>
             <div className="w-full sm:w-1/4">
               <div className="sticky pin-t">
                 <div className=" sticky pin-t bg-white w-full shadow -mt-20 rounded p-5 flex flex-col justify-center">
-                  <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mb-2" onClick={(e)=>this.handleTabSwitch(e)}>
-{this.state.current_page == "PROFILE" ? "View Issue Positions" : "View Profile"}
+                  <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mb-2" onClick={e => this.handleTabSwitch(e)}>
+                    {this.state.current_page == "PROFILE" ? "View Issue Positions" : "View Profile"}
                   </button>
-                
+
                   <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
                     Add to Compare List
                   </button>
