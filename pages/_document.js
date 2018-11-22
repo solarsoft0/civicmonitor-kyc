@@ -5,6 +5,14 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import "../styles/style.css";
 
+
+import store from "../redux/store/index";
+import { addArticle } from "../redux/actions/index";
+
+window.store = store;
+window.addArticle = addArticle;
+
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
