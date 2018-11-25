@@ -6,11 +6,11 @@ import Document, { Head, Main, NextScript } from "next/document";
 import "../styles/style.css";
 
 
-import store from "../redux/store/index";
-import { addArticle } from "../redux/actions/index";
+// import store from "../redux/store/index";
+// import { addArticle } from "../redux/actions/index";
 
-window.store = store;
-window.addArticle = addArticle;
+// window.store = store;
+// window.addArticle = addArticle;
 
 
 export default class MyDocument extends Document {
