@@ -5,7 +5,7 @@ export default props => {
   const { name, imgPath, candidate, politicalParty} = props;
   return <div className="w-full md:w-1/2 lg:w-1/3 px-3 flex flex-col mb-8">
       <div className="hover:translateY-2px transition bg-white rounded-lg shadow flex-1 flex flex-col">
-        <a href="#" className="block no-underline bg-cover h-48" style={{ backgroundImage: `url("https://res.cloudinary.com/civic-monitor/image/upload/${imgPath}")` }} />
+        <a className="block no-underline bg-cover h-48" style={{ backgroundImage: `url("https://res.cloudinary.com/civic-monitor/image/upload/${imgPath}")` }} />
         <div className="p-6 flex-1 flex flex-col justify-between">
           <h3 className="font-display mb-4">
             <Link href={{ pathname: "/profile", query: { id: candidate.id } }}>
@@ -24,7 +24,7 @@ export default props => {
           </h3>
           <div>
             <Link href={{ pathname: "/profile", query: { id: candidate.id } }}>
-              <a className="no-underline "> Learn More</a>
+              Learn More
             </Link>
           </div>
         </div>
