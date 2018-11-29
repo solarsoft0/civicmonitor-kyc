@@ -6,7 +6,9 @@ export default function Nav() {
       <div className="container mx-auto py-6">
         <div className="flex justify-between items-center">
           <div>
+          <a href="/">
           <img style={{ height: "120px"}} src="https://res.cloudinary.com/civic-monitor/image/upload/v1543350730/logo.png" className="Know your candidates" alt="logo" />
+          </a>
           </div>
           <div>{/* search here */}</div>
           <div>

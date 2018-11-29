@@ -24,7 +24,10 @@ export default props => {
           </h3>
           <div>
             <Link href={{ pathname: "/profile", query: { id: candidate.id } }}>
+              <a>
               Learn More
+              </a>
+              
             </Link>
           </div>
         </div>
