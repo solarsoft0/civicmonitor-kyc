@@ -75,9 +75,9 @@ e.preventDefault();
 
   render() {
 
-    return <div>
+    return <div style={{ fontFamily : "'Poppins', sans-serif;"}}>
         <Nav />
-        <div className="bg-blue-darkest">
+        <div className="introduction">
           <div className="container mx-auto py-20">
             <div className="flex flex-col justify-center items-center md:flex-row">
               <div className="md:mr-20">
