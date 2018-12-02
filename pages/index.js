@@ -163,25 +163,18 @@ this.setState((state, props) => { return {
   }
   render() {
     return (
-      <div>
+      <div style={{ fontFamily : "'Poppins', sans-serif;"}}>
       <Nav />
         <div className="hero-cover" style={{ minHeight: "550px", background: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('static/images/cover.jpg')" }}>
 
 
           <div className="container mx-auto px-2 py-8 sm:py-12 md:py-18">
-            <div className="mb-12" style={{ paddingTop: "70px"}}>
-              <h1 className="font-display text-white text-5xl sm:text-6xl font-semibold mb-4 leading-none">
+            <div className="mb-12">
+              <h1 style={{ fontFamily : "'Black Han Sans', sans-serif;", paddingTop: "100px"}} className="font-display text-white text-5xl sm:text-6xl font-semibold mb-4 leading-none">
                 Know your candidates
               </h1>
-              <p className="text-xl sm:text-2xl text-blue-light leading-normal">
-                Get the Information you need to make the right decision
-                <br className="hidden md:inline" />
-                don't <strong className="text-white font-bold">
-                  {" "}
-                  sell{" "}
-                </strong>
-                your
-                <strong className="text-white font-bold"> vote.</strong>
+              <p className="text-xl sm:text-2xl text-white leading-normal">
+              Get the Information you need to make the right decision <br/> Your vote is your voice.
               </p>
             </div>
             <form className="max-w-sm sm:flex">
