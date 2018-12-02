@@ -17,7 +17,7 @@ export default class extends Component {
         </div>
         <div className="container mx-auto px-6 py-10 flex justify-center">
           <div className="w-3/4">
-            <p style={{textAlign: "justify"}}>
+            <p style={{textAlign: "justify", lineHeight: "2", fontSize: "23px"}}>
               KYC is brought to you by Civic Monitor, a Nigerian non-profit
               organization committed to empowering citizens and driving
               engagement by providing the tools and data to help citizens make
@@ -37,7 +37,7 @@ export default class extends Component {
               interested in using our data API for your own apps or software?
             </p>
 
-            <p style={{paddingTop: "50px"}}>
+            <p style={{paddingTop: "50px", textAlign: "justify", lineHeight: "2", fontSize: "23px"}}>
             Are you interested in using our data API for your own apps or software? <br/>
             Contact us at<strong> kyc@civicmonitor.com</strong>
             </p>
