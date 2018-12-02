@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from "next/link";
 
 export default function Nav() {
   return <div className="bg-white">
@@ -34,19 +35,25 @@ export default function Nav() {
           <div>
             <ul className="list-reset flex">
               <li className="mr-6">
-                <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker" href="/">
-                  Home
-                </a>
+                <Link prefetch  href={{ pathname: "/" }}>
+                  <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker">
+                    Home
+                  </a>
+                </Link>
               </li>
               <li className="mr-6">
-                <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker" href="#">
-                  About Us
-                </a>
+                <Link prefetch href={{ pathname: "/aboutus" }}>
+                  <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker">
+                    About Us
+                  </a>
+                </Link>
               </li>
               <li className="mr-6">
-                <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker" href="#">
-                  Compare Candidates
-                </a>
+                <Link prefetch href={{ pathname: "/compare" }}>
+                  <a className="text-blue no-underline uppercase font-bold text-base hover:text-blue-darker">
+                    Compare Candidate
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

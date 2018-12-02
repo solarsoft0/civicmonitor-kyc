@@ -1,12 +1,24 @@
-import { createStore, applyMiddleware } from 'redux'
+import {
+    createStore, combineReducers,
+ applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
-import {reducer}  from './redux/reducers'
-import {exampleInitialState} from './redux/constants/initial-state'
+import rootReducer from "./redux/reducers/rootReducer"
 
 
 
 
-export function initializeStore(initialState = exampleInitialState) {
-    return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+export function initializeStore() {
+    return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }
+
+
+
+//use when going offline first
+
+// import compareReducers, { initialState as compareInitialState } from './redux/reducers/CompareReducer'
+// //initial state can be populate stuff from the server or local-storage but in this case, i'm using the initial state of compare reducer to fill in
+
+// export function initializeStore(initialState = {...compareInitialState}) {
+//     return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+// }

@@ -2,7 +2,8 @@ import {actionTypes} from '../constants/action-types'
 const exampleInitialState = {
   lastUpdate: 0,
   light: false,
-  count: 0
+  count: 0,
+  compare:0
 };
 
 // REDUCERS
@@ -13,9 +14,9 @@ export const reducer = (state = exampleInitialState, action) => {
                 lastUpdate: action.ts,
                 light: !!action.light
             })
-        case actionTypes.INCREMENT:
+        case actionTypes.ADD_TO_COMPARE:
             return Object.assign({}, state, {
-                count: state.count + 1
+                compare: state.compare + 1
             })
         case actionTypes.DECREMENT:
             return Object.assign({}, state, {
@@ -28,3 +29,7 @@ export const reducer = (state = exampleInitialState, action) => {
         default: return state
     }
 }
+
+
+
+
