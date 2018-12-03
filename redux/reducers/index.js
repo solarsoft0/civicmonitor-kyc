@@ -1,13 +1,35 @@
-import { ADD_ARTICLE } from "../constants/action-types";
-const initialState = {
-    articles: []
+import {actionTypes} from '../constants/action-types'
+const exampleInitialState = {
+  lastUpdate: 0,
+  light: false,
+  count: 0,
+  compare:0
 };
-const rootReducer = (state = initialState, action) => {
+
+// REDUCERS
+export const reducer = (state = exampleInitialState, action) => {
     switch (action.type) {
-        case ADD_ARTICLE:
-            return { ...state, articles: state.articles.concat(action.payload) };
-        default:
-            return state;
+        case actionTypes.TICK:
+            return Object.assign({}, state, {
+                lastUpdate: action.ts,
+                light: !!action.light
+            })
+        case actionTypes.ADD_TO_COMPARE:
+            return Object.assign({}, state, {
+                compare: state.compare + 1
+            })
+        case actionTypes.DECREMENT:
+            return Object.assign({}, state, {
+                count: state.count - 1
+            })
+        case actionTypes.RESET:
+            return Object.assign({}, state, {
+                count: exampleInitialState.count
+            })
+        default: return state
     }
-};
-export default rootReducer;
+}
+
+
+
+
