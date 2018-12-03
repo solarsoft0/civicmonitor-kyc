@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -H 127.0.0.1 -p 3000",
+    "start": "next start -p $PORT",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {

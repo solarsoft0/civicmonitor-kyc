@@ -5,8 +5,10 @@ import axios from "axios";
 import "../styles/style.css";
 import {
   loadCompareIssue,
+  loadComparePoliticians,
   selectIssueValue,
-  removeFromCompare
+  removeFromCompare,
+  setCompareValue
 } from "../redux/actions/compare-actions";
 
 export class compare extends Component {
@@ -25,12 +27,28 @@ export class compare extends Component {
         })
         .catch(e => console.log(e));
     }
+
+    //fetch politician if not already fetch
+    if (!props.politicians.length > 0) {
+      console.log(props);
+      axios
+          .get("https://civicmonitor.herokuapp.com/api/v2/politicians?all=true&lite=true")
+        .then(function({ data }) {
+          props.loadPoliticians(data.data);
+        })
+        .catch(e => console.log(e));
+    }
   }
+
   handleSelectIssueChange(e) {
     e.preventDefault();
     this.props.issueValue(event.target.value);
   }
-
+  handleSelectPoliticianChange(e, type) {
+let name = e.target.value;
+    this.props.compareValue({name,type});
+  }
+ 
   render() {
     return (
       <div>
@@ -51,26 +69,68 @@ export class compare extends Component {
         <div className="bg-blue-darkest text-white">
           <div className="container mx-auto py-20">
             <div className="flex flex-col justify-center items-center md:flex-row">
-              <div className="flex h-16 items-center py-10 px-5">
+              <div className="md:mr-4">
+                <h3 className="py-2">Select Candidate</h3>
                 <select
                   className="block appearance-none w-64 bg-white border border-grey-light hover:border-grey px-6 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                  value={this.props.selectedIssueValue}
-                  onChange={e => this.handleSelectIssueChange(e)}
+                                value={this.props.compare[0] && this.props.compare[0].name}
+                  onChange={e => this.handleSelectPoliticianChange(e,1)}
                 >
-                  {this.props.issues && this.props.issues.length < 0 ? (
+                  {this.props.politicians && this.props.politicians.length < 0 ? (
                     <option>loading</option>
                   ) : (
-                    <option>select Issues</option>
+                    <option>select politicians</option>
                   )}
-                  {this.props.issues && this.props.issues.length < 0
+                  {this.props.politicians && this.props.politicians.length < 0
                     ? ""
-                    : this.props.issues.map(issue => (
-                        <option key={issue.id}>{issue.title}</option>
-                      ))}
+                    : this.props.politicians.map(politician => (
+                                        <option key={politician.id} value={politician.name}>{politician.name}</option>
+                    ))}
                 </select>
-                <button className="w-full sm:w-auto bg-indigo uppercase rounded sm:rounded-l-none shadow text-white font-bold tracking-wide px-6 py-3 hover:bg-indigo-light">
-                  Compare
-                </button>
+              </div>
+              <div className="md:mr-4">
+                <h3 className="py-2">Select Candidate</h3>
+
+                            <select
+                                className="block appearance-none w-64 bg-white border border-grey-light hover:border-grey px-6 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                value={this.props.compare[0] && this.props.compare[1].name}
+                                onChange={e => this.handleSelectPoliticianChange(e,2)}
+                            >
+                                {this.props.politicians && this.props.politicians.length < 0 ? (
+                                    <option>loading</option>
+                                ) : (
+                                        <option>select politicians</option>
+                                    )}
+                                {this.props.politicians && this.props.politicians.length < 0
+                                    ? ""
+                                    : this.props.politicians.map(politician => (
+                                        <option key={politician.id} value={politician.name}>{politician.name}</option>
+                                    ))}
+                            </select>
+              </div>
+              <div>
+                <h3 className="py-2">Select Issue</h3>
+                <div className="flex flex-col md:flex-row">
+                  <select
+                    className="block appearance-none w-64 bg-white border border-grey-light hover:border-grey px-6 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    value={this.props.selectedIssueValue}
+                    onChange={e => this.handleSelectIssueChange(e)}
+                  >
+                    {this.props.issues && this.props.issues.length < 0 ? (
+                      <option>loading</option>
+                    ) : (
+                      <option>select Issues</option>
+                    )}
+                    {this.props.issues && this.props.issues.length < 0
+                      ? ""
+                      : this.props.issues.map(issue => (
+                          <option key={issue.id}>{issue.title}</option>
+                        ))}
+                  </select>
+                  <button className="mt-4 md:mt-0 w-full sm:w-auto bg-indigo uppercase rounded sm:rounded-l-none shadow text-white font-bold tracking-wide px-6 py-3 hover:bg-indigo-light">
+                    Compare
+                  </button>
+                </div>
               </div>{" "}
             </div>
           </div>
@@ -108,8 +168,8 @@ export class compare extends Component {
 }
 
 const mapStateToProps = state => {
-  const { compare, status, issues, selectedIssueValue } = state.compareReducer;
-  return { compare, status, issues, selectedIssueValue };
+  const { compare, status, issues, selectedIssueValue, politicians } = state.compareReducer;
+  return { compare, status, issues, selectedIssueValue, politicians };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -117,8 +177,14 @@ const mapDispatchToProps = dispatch => {
     loadIssue: payload => {
       dispatch(loadCompareIssue(payload));
     },
+    loadPoliticians: payload => {
+      dispatch(loadComparePoliticians(payload));
+    },
     issueValue: payload => {
       dispatch(selectIssueValue(payload));
+    },
+    compareValue: payload => {
+      dispatch(setCompareValue(payload));
     },
     removeCompare: payload => {
       dispatch(removeFromCompare(payload));

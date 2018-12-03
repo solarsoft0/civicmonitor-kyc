@@ -12,12 +12,16 @@ export class CompareContainer extends Component {
 
     this.handleSelectIssueChange = this.handleSelectIssueChange.bind(this);
 
-    axios
-      .get("https://civicmonitor.herokuapp.com/api/v2/issues")
-      .then(function({ data }) {
-        props.loadIssue(data.data);
-      })
-      .catch(e => console.log(e));
+    //fetch issues if not already fetch
+    if (!props.issues.length > 0) {
+      console.log(props);
+      axios
+        .get("https://civicmonitor.herokuapp.com/api/v2/issues")
+        .then(function ({ data }) {
+          props.loadIssue(data.data);
+        })
+        .catch(e => console.log(e));
+    }
   }
 
   handleSelectIssueChange(e) {
