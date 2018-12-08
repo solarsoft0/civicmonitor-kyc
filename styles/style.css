@@ -10,10 +10,22 @@
     background:-o-linear-gradient(bottom,#01502B 0,#01502B 30%,#03A65A 100%);
     background:linear-gradient(to top,#01502B 0,#01502B 30%,#03A65A 100%); */
 
+    background-image: url(https://res.cloudinary.com/civic-monitor/image/upload/v1544262571/ballot-black-and-white-black-and-white-1550337.jpg);
+    background-size: cover;
     background-color: rgb(52, 144, 220);
-    padding:80px 0 50px;
     position:relative;
     color:#fff
+}
+
+.overlay{
+    /* position: absolute; */
+    padding:80px 0 50px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
 }
 .bg-indigo{
     background-color: rgb(52, 144, 220) !important;
