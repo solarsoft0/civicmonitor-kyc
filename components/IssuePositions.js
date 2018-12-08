@@ -38,8 +38,6 @@ export default function IssuePositions(props) {
                     <h4 className="mb-5">{position.title}</h4>
                   )}
                   <div
-                  style={{textAlign: "justify", lineHeight: "2.4", fontSize: "20px", background: "rgb(52, 144, 220)", color: "#fff", padding: "15px", borderRadius: "5px"}}
-
                     className="leading-loose"
                     dangerouslySetInnerHTML={{ __html: position.body }}
                   />{" "}
