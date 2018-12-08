@@ -1,11 +1,14 @@
 import "../styles/style.css";
 import Footer from "../components/Footer";
-import Nav from "../components/Nav"
-import Profile from "../components/Profile"
-import IssuePositions from "../components/IssuePositions"
+import Nav from "../components/Nav";
+import Profile from "../components/Profile";
+import IssuePositions from "../components/IssuePositions";
+import Comment from "../components/Comment";
 import MyLoader from "../components/MyLoader";
 import React, { Component, Fragment } from "react";
 import axios from "axios";
+import Share from "../components/Share";
+// import Comment from "../components/Comment";
 
 export default class extends Component {
   static async getInitialProps({ req, query: { id }}) {
@@ -75,13 +78,14 @@ e.preventDefault();
 
   render() {
 
-    return <div>
+    return <div style={{ fontFamily : "'Poppins', sans-serif;"}}>
         <Nav />
-        <div className="bg-blue-darkest">
+        <div className="introduction">
+          <div className="overlay">
           <div className="container mx-auto py-20">
             <div className="flex flex-col justify-center items-center md:flex-row">
               <div className="md:mr-20">
-                <img src={`https://res.cloudinary.com/civic-monitor/image/upload/${this.state.politician.image}`} className="w-32 h-32 rounded-full" />
+                <img src={`https://res.cloudinary.com/civic-monitor/image/upload/${this.state.politician.image}`} className="w-32 h-32" style={{ borderRadius: "10px"}} />
               </div>
               <div className="mt-5 w-3/4 flex flex-col items-center md:items-start text-white ">
                 <h2 className="text-center text-white">
@@ -94,14 +98,38 @@ e.preventDefault();
                   <p className="text-center md:text-left flex items-center">
                   <strong className="mr-5">Party:</strong> {this.state.political_party.name} ({this.state.political_party.acronym}) <img className="ml-5 w-10 h-10 rounded-full" src={`https://res.cloudinary.com/civic-monitor/image/upload/${this.state.political_party.logo}`} />
                   </p>
+
+                  <p className="text-center md:text-left flex items-center">
+                  <strong className="mr-5">Office:</strong> Presidency
+                  </p>
                 </div>
+
+
               </div>
             </div>
           </div>
         </div>
+        </div>
+        
         <div className="container mx-auto px-6 py-10">
+
+
+      <div style={{
+        marginTop: "20px"
+      }}
+  className=" pin-t bg-white w-full shadow -mt-20 rounded p-5 flex flex-col justify-center">
+      <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mb-2" onClick={e => this.handleTabSwitch(e)}>
+        {this.state.current_page == "PROFILE" ? "View Issue Positions" : "View Profile"}
+      </button>
+
+      <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
+        Add to Compare List
+      </button>
+    </div>
+    
+
           <div className="flex flex-col-reverse sm:flex-row">
-            <div className="w-full sm:w-3/4 sm:mr-5">
+            <div className="w-full sm:w-4/4 sm:mr-5">
               {this.state.current_page == "PROFILE" ? (
                 <Profile politician={this.state.politician} />
               ) : (
@@ -110,37 +138,12 @@ e.preventDefault();
                 />
               )}
             </div>
-            <div className="w-full sm:w-1/4">
-              <div className="sticky pin-t">
-                <div className=" sticky pin-t bg-white w-full shadow -mt-20 rounded p-5 flex flex-col justify-center">
-                  <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mb-2" onClick={e => this.handleTabSwitch(e)}>
-                    {this.state.current_page == "PROFILE" ? "View Issue Positions" : "View Profile"}
-                  </button>
-
-                  <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
-                    Add to Compare List
-                  </button>
-                </div>
-                <div className="bg-white w-full shadow mt-5 rounded p-5">
-                  <h3>Political party</h3>
-                  <p dangerouslySetInnerHTML={{ __html: this.state.political_party.name }} />
-                </div>
-                <div className="bg-white w-full shadow mt-5 rounded p-5">
-                  {/* hardcoded */}
-                  <div className="py-2 border-b-2">
-                    <h3>Office</h3>
-                    <p>Presidency</p>
-                  </div>
-                  <div className="py-2">
-                    <h3>Election</h3>
-                    <p>
-                      <strong>#NigeriaDecides2019</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+
+          <Share />
+
+          <Comment style={{ marginTop: "30px"}}/>
+
           <Footer />
         </div>
       </div>;

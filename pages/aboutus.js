@@ -8,7 +8,7 @@ export default class extends Component {
     return (
       <div>
         <Nav />
-        <div className="bg-blue-darkest text-white">
+        <div className="bg-blue-darkest text-white" style={{height: "300px"}}>
           <div className="container mx-auto py-20">
             <div className="flex flex-col justify-center items-center md:flex-row">
               <h2> About Us</h2>
@@ -17,7 +17,7 @@ export default class extends Component {
         </div>
         <div className="container mx-auto px-6 py-10 flex justify-center">
           <div className="w-3/4">
-            <p>
+            <p style={{textAlign: "justify", lineHeight: "2", fontSize: "23px"}}>
               KYC is brought to you by Civic Monitor, a Nigerian non-profit
               organization committed to empowering citizens and driving
               engagement by providing the tools and data to help citizens make
@@ -35,7 +35,11 @@ export default class extends Component {
               also provide the tools for voters to compare the different
               positions of two candidates on any particular issue. Are you
               interested in using our data API for your own apps or software?
-              <br /> <strong>Contact us at kyc@civicmonitor.com</strong>
+            </p>
+
+            <p style={{paddingTop: "50px", textAlign: "justify", lineHeight: "2", fontSize: "23px"}}>
+            Are you interested in using our data API for your own apps or software? <br/>
+            Contact us at<strong> kyc@civicmonitor.com</strong>
             </p>
           </div>
         </div>

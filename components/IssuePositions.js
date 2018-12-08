@@ -10,7 +10,7 @@ import {
 export default function IssuePositions(props) {
   const { IssuePositions } = props;
   console.log(IssuePositions);
-  return <div>
+  return <div style={{ textAlign : "justify"}}>
       <div className="flex border-b-2 border-grey-light mb-4">
         <span className="font-display font-bold tracking-wide uppercase py-4 border-b-2 border-indigo -mb-2px">
           Issue Positions
