@@ -7,7 +7,6 @@ import Comment from "../components/Comment";
 import MyLoader from "../components/MyLoader";
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import Share from "../components/Share";
 // import Comment from "../components/Comment";
 
 export default class extends Component {
@@ -81,7 +80,7 @@ e.preventDefault();
     return <div style={{ fontFamily : "'Poppins', sans-serif;"}}>
         <Nav />
         <div className="introduction">
-          <div className="overlay">
+        <div className="overlay">
           <div className="container mx-auto py-20">
             <div className="flex flex-col justify-center items-center md:flex-row">
               <div className="md:mr-20">
@@ -98,13 +97,7 @@ e.preventDefault();
                   <p className="text-center md:text-left flex items-center">
                   <strong className="mr-5">Party:</strong> {this.state.political_party.name} ({this.state.political_party.acronym}) <img className="ml-5 w-10 h-10 rounded-full" src={`https://res.cloudinary.com/civic-monitor/image/upload/${this.state.political_party.logo}`} />
                   </p>
-
-                  <p className="text-center md:text-left flex items-center">
-                  <strong className="mr-5">Office:</strong> Presidency
-                  </p>
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -113,6 +106,23 @@ e.preventDefault();
         
         <div className="container mx-auto px-6 py-10">
 
+        <div className="w-full sm:w-4/4">
+        <div className="sticky pin-t" >
+          <div className="bg-white w-full shadow mt-5 rounded p-5">
+            {/* hardcoded */}
+            <div className="py-2 border-b-2">
+              <h3>Office</h3>
+              <p>Presidency</p>
+            </div>
+            <div className="py-2">
+              <h3>Election</h3>
+              <p>
+                <strong>#NigeriaDecides2019</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div style={{
         marginTop: "20px"
@@ -140,9 +150,9 @@ e.preventDefault();
             </div>
           </div>
 
-          <Share />
+         
 
-          <Comment style={{ marginTop: "30px"}}/>
+          <Comment />
 
           <Footer />
         </div>

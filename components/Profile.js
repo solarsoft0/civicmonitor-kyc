@@ -18,7 +18,7 @@ export default function (props) {
           </div>
           {/* another info card */}
           <div className="bg-white w-full shadow rounded mt-5 p-5 whitespace-pre-wrap">
-              <h3 className="mb-5">honors</h3>
+              <h3 className="mb-5">Honors</h3>
               <p style={{textAlign: "justify", lineHeight: "2.4", fontSize: "20px",  padding: "15px", borderRadius: "5px"}}  dangerouslySetInnerHTML={{ __html: honors }} />
           </div>
 
