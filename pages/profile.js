@@ -8,6 +8,7 @@ import MyLoader from "../components/MyLoader";
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 // import Comment from "../components/Comment";
+import Share from "../components/Share";
 
 export default class extends Component {
   static async getInitialProps({ req, query: { id }}) {
@@ -103,6 +104,8 @@ e.preventDefault();
           </div>
         </div>
         </div>
+
+        <Share />
         
         <div className="container mx-auto px-6 py-10">
 

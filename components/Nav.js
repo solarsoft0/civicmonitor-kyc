@@ -1,5 +1,4 @@
 import React from 'react';
-import Share from "../components/Share";
 
 
 export default function Nav() {
@@ -34,7 +33,7 @@ export default function Nav() {
         </div>
       </div>
 
-      <Share />
+     
 
     </div>;
 }

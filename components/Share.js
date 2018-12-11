@@ -54,7 +54,7 @@ class Share extends React.Component {
             top: 160,             // offset in pixels from the top of the page
  
             // OPTIONAL PARAMETERS
-            url: 'https://www.kyc.civicmonitor.com', // (defaults to current url)
+            // url: 'https://www.kyc.civicmonitor.com', // (defaults to current url)
             image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
             description: 'custom text',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
