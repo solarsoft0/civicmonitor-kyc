@@ -1,15 +1,16 @@
 import React from "react";
-import {InlineReactionButtons} from 'sharethis-reactjs';
-import {InlineShareButtons} from 'sharethis-reactjs';
-import {StickyShareButtons} from 'sharethis-reactjs';
-import {InlineFollowButtons} from 'sharethis-reactjs';
- 
+import { InlineReactionButtons } from "sharethis-reactjs";
+import { InlineShareButtons } from "sharethis-reactjs";
+import { StickyShareButtons } from "sharethis-reactjs";
+import { InlineFollowButtons } from "sharethis-reactjs";
+
 class Share extends React.Component {
- 
-  render () {
+  render() {
     return (
       <div>
-        <style dangerouslySetInnerHTML={{__html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           html, body {
             margin: 0;
             padding: 0;
@@ -57,18 +58,18 @@ class Share extends React.Component {
             // url: 'https://www.kyc.civicmonitor.com', // (defaults to current url)
             image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
             description: 'custom text',       // (defaults to og:description or twitter:description)
-            title: 'custom title',            // (defaults to og:title or twitter:title)
+            title: 'CivicMonitior',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
             subject: 'custom email subject',  // (only for email sharing)
             username: 'custom twitter handle' // (only for twitter sharing)
  
+        
           }}
         />
- 
       </div>
     );
   }
-};
- 
+}
+
 // export
 export default Share;
