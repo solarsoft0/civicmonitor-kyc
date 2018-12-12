@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function (props) {
-    const { biography, works, family, education, honors } = props.politician;
+    const { biography, works, family, education, honors} = props.politician;
   return (
 
     <div style={{marginTop: "100px"}}>
